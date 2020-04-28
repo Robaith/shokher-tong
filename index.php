@@ -70,25 +70,30 @@
                 <div class="htc__product__container">
                     <div class="row">
                         <div class="product__list clearfix mt--30">
-                            <!-- Start Single Category -->
+                            <?php 
+                            $get_product =get_product($con,'latest', 4);
+                            foreach ($get_product as $list) {
+                            
+                            ?>
+
                             <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                                 <div class="category">
                                     <div class="ht__cat__thumb">
-                                        <a href="product-details.html">
-                                            <img src="images/product/1.jpg" alt="product images">
+                                        <a href="product.php?id=<?php echo $list['id'] ?>">
+                                            <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$list['image'] ?>" alt="product images">
                                         </a>
                                     </div>
                                     <div class="fr__product__inner">
-                                        <h4><a href="product-details.html">Largest Water Pot</a></h4>
+                                        <h4><a href="product-details.html"><?php echo $list['p_name'] ?></a></h4>
                                         <ul class="fr__pro__prize">
-                                            <li class="old__prize">$30.3</li>
-                                            <li>$25.9</li>
+                                            <li class="old__prize"><?php echo $list['mrp'] ?></li>
+                                            <li><?php echo $list['price'] ?></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                             <!-- End Single Category -->
-
+                        <?php } ?>
                         </div>
                     </div>
                 </div>

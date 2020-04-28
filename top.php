@@ -1,5 +1,6 @@
 <?php
 require('connection.inc.php');
+require('functions.inc.php');
 
 $cat_res =mysqli_query($con, "select * from categories where status = 1 order by name asc");
 $cat_arr = array();

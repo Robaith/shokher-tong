@@ -13,13 +13,25 @@
 		die();
 	}
 
-	function get_safe_value($con,$str)
+	function get_product($con, $type = '', $limit='')
 	{
-		if ($str != '')
-		{
-			$str = trim($str);
-			return mysqli_real_escape_string($con,$str); 
+		$sql = "select * from product where status =1";
+		if ($type = 'latest') {
+			$sql .= " order by id asc";
 		}
+		if ($limit != '') {
+			$sql .= " limit $limit"; 
+		}
+		$res = mysqli_query($con, $sql);
+		$data = array();
+		while ($row = mysqli_fetch_assoc($res)) {
+			$data[] = $row;
+		}
+		return $data;
+
+
+
+
 	}
 
  ?>
