@@ -3560,6 +3560,10 @@ ul.htc__instagram__posts.owl-carousel li img {
 .slick-initialized .slick-slide {
     outline: none;
 }
+img.one {
+  height: 385px;
+  width: 290px;
+}
 
 
 

@@ -13,12 +13,13 @@
 		die();
 	}
 
-	function get_product($con, $type = '', $limit='')
+	function get_product($con,$limit='', $cat_id='')
 	{
 		$sql = "select * from product where status =1";
-		if ($type = 'latest') {
-			$sql .= " order by id asc";
+		if ($cat_id != '') {
+			$sql .= " and categories_id = $cat_id"; 
 		}
+		$sql .= " order by id desc"; 
 		if ($limit != '') {
 			$sql .= " limit $limit"; 
 		}
