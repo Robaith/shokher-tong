@@ -80,6 +80,9 @@ $get_product = get_product($con,'',$cat_id);
         <section class="htc__product__grid bg__white ptb--100">
             <div class="container">
                 <div class="row">
+                	<?php if (count($get_product)>0) { ?>
+                		
+                	
                     <div class="col-lg-9 col-lg-push-3 col-md-9 col-md-push-3 col-sm-12 col-xs-12">
                         <div class="htc__product__rightidebar">
                             <div class="htc__grid__top">
@@ -196,6 +199,11 @@ $get_product = get_product($con,'',$cat_id);
                             <!-- End Best Sell Area -->
                         </div>
                     </div>
+                <?php } 
+                else{
+                	echo "No data found" ;
+                }
+                ?>
                 </div>
             </div>
         </section>
