@@ -32,6 +32,7 @@ while($row = mysqli_fetch_assoc($cat_res)){
     <link rel="stylesheet" href="css/core.css">
     <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="css/shortcode/shortcodes.css">
+    <link rel="stylesheet" href="css/shortcode/slider.css">
     <!-- Theme main style -->
     <link rel="stylesheet" href="style.css">
     <!-- Responsive css -->

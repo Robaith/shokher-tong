@@ -68,6 +68,7 @@
     padding: 0 36px;
     text-transform: capitalize;
     transition: all 0.3s ease 0s;
+    margin-top: 20px;
 }
 .cr__btn a:hover {
     background: #313131 none repeat scroll 0 0;

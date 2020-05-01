@@ -1,7 +1,15 @@
 <?php 
 require('top.php');
 $product_id=mysqli_real_escape_string($con,$_GET['id']);
-$get_product = get_product($con,'','',$product_id);
+if ($product_id>0) {
+    $get_product = get_product($con,'','',$product_id);
+}else{
+    ?>
+    <script>
+        window.location.href='index.php'
+    </script>
+    <?php
+}
 ?>
 
 <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -52,17 +60,19 @@ $get_product = get_product($con,'','',$product_id);
                                     <li><?php echo $get_product[0]['price'] ?></li>
                                 </ul>
                                 <p class="pro__info"><?php echo $get_product[0]['short_desc'] ?></p>
-                                <div class="ht__pro__desc">
-                                    <div class="sin__desc">
-                                        <p><span>Availability:</span> In Stock</p>
-                                    </div>
-                                    <div class="sin__desc align--left">
-                                        <p><span>Categories:</span></p>
-                                        <ul class="pro__cat__list">
-                                            <li><a href="#"><?php echo $get_product[0]['name'] ?>,</a></li>
-                                        </ul>
-                                    </div>
-                                    
+                                    <div class="ht__pro__desc">
+                                        <div class="sin__desc">
+                                            <p><span>Availability:</span> In Stock</p>
+                                        </div>
+                                        <div class="sin__desc align--left">
+                                            <p><span>Categories:</span></p>
+                                            <ul class="pro__cat__list">
+                                                <li><a href="#"><?php echo $get_product[0]['name'] ?>,</a></li>
+                                            </ul>
+                                        </div>
+                                            
+                                                    <a class="fr__btn" href="cart.html">Add to cart</a>
+                                            
                                     </div>
                                 </div>
                             </div>
