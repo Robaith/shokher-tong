@@ -30,20 +30,21 @@
 								</div>
 							</div>
 							<div class="col-xs-12">
-								<form id="contact-form" action="#" method="post">
+								<form id="login-form" method="post">
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" name="name" placeholder="Your Email*" style="width:100%">
+											<input type="text" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
 										</div>
 									</div>
+									<span class="field_error" id="login_email_error"></span>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" name="name" placeholder="Your Password*" style="width:100%">
+											<input type="text" name="login_password" id="login_password" placeholder="Your Password*" style="width:100%">
 										</div>
 									</div>
-									
+									<span class="field_error" id="login_password_error"></span>
 									<div class="contact-btn">
-										<button type="submit" class="fv-btn">Login</button>
+										<button type="button" class="fv-btn" onclick="user_login()">Login</button>
 									</div>
 								</form>
 								<div class="form-output">
@@ -63,7 +64,7 @@
 								</div>
 							</div>
 							<div class="col-xs-12">
-								<form id="contact-form" method="post">
+								<form id="register-form" method="post">
 									<div class="single-contact-form">
 										<div class="contact-box name">
 											<input type="text" name="name" id="name" placeholder="Your Name*" style="width:100%">
@@ -93,7 +94,7 @@
 										<button type="button" onclick="user_register()" class="fv-btn">Register</button>
 									</div>
 								</form>
-								<div class="form-output">
+								<div class="form-output register_msg">
 									<p class="form-messege"></p>
 								</div>
 							</div>

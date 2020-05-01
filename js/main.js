@@ -466,7 +466,7 @@ function user_register(){
   var name = jQuery("#name").val();
   var email = jQuery("#email").val();
   var mobile = jQuery("#mobile").val();
-  var message = jQuery("#message").val();
+  var password = jQuery("#password").val();
   var is_error = '';
 
   if (name == ''){
@@ -491,7 +491,44 @@ function user_register(){
       type : 'post',
       data : 'name='+name+ '&email='+email+ '&mobile='+mobile+ '&password='+password,
       success : function(result){
-        alert(result);
+        if (result == 'email_present') {
+          jQuery('#email_error').html('This email is already registered !');
+        }
+        if (result == 'insert') {
+          jQuery('.register_msg p').html('Thank u for registration. U can now login !');
+        }
+      }
+    });
+  }
+
+}
+
+function user_login(){
+  jQuery('.field_error').html('');
+  var email = jQuery("#login_email").val();
+  var password = jQuery("#login_password").val();
+  var is_error = '';
+
+  if (email == ''){
+    jQuery('#login_email_error').html('please enter email');
+    is_error = 'yes';
+  }
+  if (password == ''){
+    jQuery('#login_password_error').html('please enter password');
+    is_error = 'yes';
+  }
+  if (is_error == '') {
+    jQuery.ajax({
+      url: 'login_submit.php',
+      type : 'post',
+      data : 'email='+email+ '&password='+password,
+      success : function(result){
+        if (result == 'wrong') {
+          jQuery('.login_msg p').html('Please enter valid information');
+        }
+        if (result == 'valid') {
+          window.location.href="index.php";
+        }
       }
     });
   }
