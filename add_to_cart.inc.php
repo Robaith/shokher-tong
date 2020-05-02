@@ -27,7 +27,16 @@ class add_to_cart
 
 	function emptyProduct($pid,$quantity)
 	{
-		unsrt($_SESSION['cart']);
+		unset($_SESSION['cart']);
+	}
+
+	function totalProduct()
+	{
+		if(isset($_SESSION['cart'])) {
+			return count($_SESSION['cart']);
+		}else{
+			return 0;
+		}
 	}
 
 

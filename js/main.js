@@ -535,6 +535,19 @@ function user_login(){
 
 }
 
+function manage_cart(pid,type){
+  var quantity = jQuery("#quantity").val();
+  jQuery.ajax({
+      url: 'manage_cart.php',
+      type : 'post',
+      data : 'pid='+pid+ '&quantity='+quantity+'&type='+type,
+      success: function(result){
+        jQuery('.htc__qua').html(result);
+      }
+
+    });
+}
+
 
 
 

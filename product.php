@@ -73,7 +73,7 @@ if ($product_id>0) {
 
                                         <div class="sin__desc">
                                             <p><span>Quantity:</span></p>
-                                            <select style="width: 30px">
+                                            <select id="quantity" style="width: 30px">
                                                 <option>1</option>
                                                 <option>2</option>
                                                 <option>3</option>
@@ -88,7 +88,7 @@ if ($product_id>0) {
                                         </div>
 
                                             
-                                        <a class="fr__btn" href="cart.html">Add to cart</a>
+                                        <a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product[0]['id'] ?>','add')">Add to cart</a>
                                             
                                     </div>
                                 </div>
