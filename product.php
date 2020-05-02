@@ -70,8 +70,25 @@ if ($product_id>0) {
                                                 <li><a href="#"><?php echo $get_product[0]['name'] ?>,</a></li>
                                             </ul>
                                         </div>
+
+                                        <div class="sin__desc">
+                                            <p><span>Quantity:</span></p>
+                                            <select style="width: 30px">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                                <option>10</option>
+                                            </select>
+                                        </div>
+
                                             
-                                                    <a class="fr__btn" href="cart.html">Add to cart</a>
+                                        <a class="fr__btn" href="cart.html">Add to cart</a>
                                             
                                     </div>
                                 </div>

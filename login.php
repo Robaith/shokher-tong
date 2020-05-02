@@ -47,7 +47,7 @@
 										<button type="button" class="fv-btn" onclick="user_login()">Login</button>
 									</div>
 								</form>
-								<div class="form-output">
+								<div class="form-output login_msg">
 									<p class="form-messege"></p>
 								</div>
 							</div>
