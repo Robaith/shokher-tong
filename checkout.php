@@ -36,6 +36,11 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
                         <div class="checkout__inner">
                             <div class="accordion-list">
                                 <div class="accordion">
+                                    <?php
+                                        $accordion_class = 'accordion__title'; 
+                                        if (!isset($_SESSION['USER_LOGIN'])) {
+                                            $accordion_class = 'accordion__hide'; 
+                                        ?>
                                     <div class="accordion__title">
                                         Checkout Method
                                     </div>
@@ -44,21 +49,24 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="checkout-method__login">
-                                                        <form action="#">
+                                                        <form id="login-form" method="post">
                                                             <h5 class="checkout-method__title">Login</h5>
                                                             <div class="single-input">
-                                                                <label for="user-email">Email Address</label>
-                                                                <input type="email" id="user-email">
+                                                                <input type="text" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
+                                                                <span class="field_error" id="login_email_error"></span>
                                                             </div>
                                                             <div class="single-input">
-                                                                <label for="user-pass">Password</label>
-                                                                <input type="password" id="user-pass">
+                                                                <input type="text" name="login_password" id="login_password" placeholder="Your Password*" style="width:100%">
+                                                                <span class="field_error" id="login_password_error"></span>
                                                             </div>
                                                             <p class="require">* Required fields</p>
                                                             <div class="dark-btn">
-                                                                <a href="#">LogIn</a>
+                                                                <button type="button" class="fv-btn" onclick="user_login()">Login</button>
                                                             </div>
                                                         </form>
+                                                        <div class="form-output login_msg">
+                                                            <p class="form-messege"></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -66,28 +74,36 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
                                                         <form action="#">
                                                             <h5 class="checkout-method__title">Register</h5>
                                                             <div class="single-input">
-                                                                <label for="user-email">Name</label>
-                                                                <input type="email" id="user-email">
+                                                                <input type="text" name="name" id="name" placeholder="Your Name*" style="width:100%">
+                                                               <span class="field_error" id="name_error"></span>
                                                             </div>
 															<div class="single-input">
-                                                                <label for="user-email">Email Address</label>
-                                                                <input type="email" id="user-email">
+                                                                <input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
+                                                                <span class="field_error" id="email_error"></span>
+                                                            </div>
+                                                            <div class="single-input">
+                                                                <input type="text" name="mobile" id="mobile" placeholder="Your Mobile*" style="width:100%">
+                                                                <span class="field_error" id="mobile_error"></span>
                                                             </div>
 															
                                                             <div class="single-input">
-                                                                <label for="user-pass">Password</label>
-                                                                <input type="password" id="user-pass">
+                                                                <input type="password" name="password" id="password" placeholder="Your Password*" style="width:100%">
+                                                                <span class="field_error" id="password_error"></span>
                                                             </div>
                                                             <div class="dark-btn">
-                                                                <a href="#">Register</a>
+                                                                <button type="button" onclick="user_register()" class="fv-btn">Register</button>
                                                             </div>
                                                         </form>
+                                                        <div class="form-output register_msg">
+                                                            <p class="form-messege"></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="accordion__title">
+                                   <?php } ?>
+                                    <div class="<?php echo $accordion_class ?>">
                                         Address Information
                                     </div>
                                     <div class="accordion__body">
@@ -133,7 +149,7 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="accordion__title">
+                                    <div class="<?php echo $accordion_class ?>">
                                         payment information
                                     </div>
                                     <div class="accordion__body">
