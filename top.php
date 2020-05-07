@@ -69,7 +69,7 @@ $totalProduct = $obj->totalProduct();
                                      <a href="index.php"><img src="images/logo/4.png" alt="logo images"></a>
                                 </div>
                             </div>
-                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                            <div class="col-md-7 col-lg-7 col-sm-5 col-xs-3">
                                 <nav class="main__menu__nav hidden-xs hidden-sm">
                                     <ul class="main__menu">
                                         <li class="drop"><a href="index.php">Home</a></li>
@@ -101,22 +101,20 @@ $totalProduct = $obj->totalProduct();
                                     </nav>
                                 </div>  
                             </div>
-                            <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
+                            <div class="col-md-3 col-lg-3 col-sm-4 col-xs-4">
                                 <div class="header__right">
                                     <div class="header__account">
-                                        <?php 
-                                        if (isset($_SESSION['USER_LOGIN'])) {
-                                            echo '<a href="logout.php">Logout</a>';
-                                        }
-                                        else{
+                                        <?php if(isset($_SESSION['USER_LOGIN'])){
+                                            echo '<a href="logout.php">Logout</a> <a href="my_order.php">My Order</a>';
+                                        }else{
                                             echo '<a href="login.php">Login/Register</a>';
-                                         }   
-                                         ?>
+                                        }
+                                        ?>
                                         
                                     </div>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
-                                        <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct ?></span></a>
+                                        <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct?></span></a>
                                     </div>
                                 </div>
                             </div>

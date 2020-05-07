@@ -34,6 +34,24 @@ if (isset($_POST['submit'])) {
 
     mysqli_query($con, "insert into `order`(user_id,address,city,pincode,mobile,payment_type,total_price,payment_status,order_status,added_on) values('$user_id', '$address', '$city', '$pincode', '$mobile', '$payment_type', '$total_price', '$payment_status', '$order_status', '$added_on') ");
 
+    $order_id=mysqli_insert_id($con);
+    
+    foreach($_SESSION['cart'] as $key=>$val){
+        $productArr=get_product($con,'','',$key);
+        $price=$productArr[0]['price'];
+        $quantity=$val['quantity'];
+        
+        mysqli_query($con,"insert into `order_detail`(order_id,product_id,quantity,price) values('$order_id','$key','$quantity','$price')");
+    }
+    
+    unset($_SESSION['cart'])
+    ?>
+    <script>
+        window.location.href='thank_you.php';
+    </script>
+    <?php
+
+
 }
 
 
