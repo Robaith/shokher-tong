@@ -13,7 +13,7 @@
       }
    }
 
-   $sql = "select * from users_us order by name desc";
+   $sql = "select * from users order by name desc";
    $res = mysqli_query($con,$sql);
  ?>
 

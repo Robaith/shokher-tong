@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2020 at 07:08 PM
+-- Generation Time: May 08, 2020 at 11:30 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -61,7 +61,8 @@ INSERT INTO `categories` (`id`, `name`, `status`) VALUES
 (2, 'cat2', 1),
 (39, 'cat1', 1),
 (48, 'cat3', 1),
-(49, 'cat4', 1);
+(49, 'cat4', 1),
+(52, 'cat5', 1);
 
 -- --------------------------------------------------------
 
@@ -86,6 +87,58 @@ INSERT INTO `contact_us` (`id`, `name`, `email`, `mobile`, `comment`, `added_on`
 (2, 'robaith', 'test1@gmail.com', '1234567', 'test', '2020-04-30 08:17:02'),
 (3, 'fgdgf', '', '', 'undefined', '2020-04-30 05:46:41'),
 (4, 'fgdgf', '', '', 'undefined', '2020-04-30 05:46:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `address` varchar(250) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `pincode` int(11) NOT NULL,
+  `mobile` int(11) NOT NULL,
+  `payment_type` varchar(20) NOT NULL,
+  `total_price` float NOT NULL,
+  `payment_status` varchar(20) NOT NULL,
+  `order_status` varchar(20) NOT NULL,
+  `added_on` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`id`, `user_id`, `address`, `city`, `pincode`, `mobile`, `payment_type`, `total_price`, `payment_status`, `order_status`, `added_on`) VALUES
+(1, 4, 'shasongacha', 'cumilla', 3500, 123456, 'cod', 570, 'success', 'pending', '2020-05-07 12:11:42'),
+(2, 6, 'rashid colony', 'noakhali', 3400, 234243, 'cod', 370, 'success', 'pending', '2020-05-07 05:12:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_detail`
+--
+
+CREATE TABLE `order_detail` (
+  `id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_detail`
+--
+
+INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
+(1, 1, 10, 2, 190),
+(2, 1, 2, 1, 190),
+(3, 2, 11, 1, 190),
+(4, 2, 1, 2, 90);
 
 -- --------------------------------------------------------
 
@@ -139,7 +192,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `mobile`, `password`, `added_on`) VALUES
-(4, 'test1', 'test1@gmail.com', '12342134132', '1234', '2020-05-01 12:40:51');
+(4, 'test1', 'test1@gmail.com', '12342134132', '1234', '2020-05-01 12:40:51'),
+(5, 'test2', 'test2@gmail.com', '1234567', '1234', '2020-05-05 11:38:07'),
+(6, 'robo2', 'robo22@gmail.com', '1234', '1234', '2020-05-06 04:02:56');
 
 --
 -- Indexes for dumped tables
@@ -161,6 +216,18 @@ ALTER TABLE `categories`
 -- Indexes for table `contact_us`
 --
 ALTER TABLE `contact_us`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_detail`
+--
+ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -189,12 +256,24 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `order_detail`
+--
+ALTER TABLE `order_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
@@ -207,7 +286,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
     $payment_type = get_safe_value($con, $_POST['payment_type']);
     $user_id = $_SESSION['USER_ID'];
     $total_price = $total_cart;
-    $payment_status = 'pending';
+    $payment_status = '1';
     if ($payment_type=='cod') {
         $payment_status = 'success';
     }
