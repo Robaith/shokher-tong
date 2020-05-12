@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2020 at 11:30 AM
+-- Generation Time: May 10, 2020 at 11:08 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -85,8 +85,7 @@ CREATE TABLE `contact_us` (
 
 INSERT INTO `contact_us` (`id`, `name`, `email`, `mobile`, `comment`, `added_on`) VALUES
 (2, 'robaith', 'test1@gmail.com', '1234567', 'test', '2020-04-30 08:17:02'),
-(3, 'fgdgf', '', '', 'undefined', '2020-04-30 05:46:41'),
-(4, 'fgdgf', '', '', 'undefined', '2020-04-30 05:46:46');
+(5, 'sdfasd', 'afd@hfgh', '42354', 'sdfgsdgf', '2020-05-10 07:45:08');
 
 -- --------------------------------------------------------
 
@@ -104,7 +103,7 @@ CREATE TABLE `order` (
   `payment_type` varchar(20) NOT NULL,
   `total_price` float NOT NULL,
   `payment_status` varchar(20) NOT NULL,
-  `order_status` varchar(20) NOT NULL,
+  `order_status` int(11) NOT NULL,
   `added_on` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -113,8 +112,8 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id`, `user_id`, `address`, `city`, `pincode`, `mobile`, `payment_type`, `total_price`, `payment_status`, `order_status`, `added_on`) VALUES
-(1, 4, 'shasongacha', 'cumilla', 3500, 123456, 'cod', 570, 'success', 'pending', '2020-05-07 12:11:42'),
-(2, 6, 'rashid colony', 'noakhali', 3400, 234243, 'cod', 370, 'success', 'pending', '2020-05-07 05:12:43');
+(1, 4, 'shasongacha', 'cumilla', 3500, 123456, 'cod', 570, 'success', 4, '2020-05-07 12:11:42'),
+(2, 6, 'rashid colony', 'noakhali', 3400, 234243, 'cod', 370, 'success', 3, '2020-05-07 05:12:43');
 
 -- --------------------------------------------------------
 
@@ -139,6 +138,28 @@ INSERT INTO `order_detail` (`id`, `order_id`, `product_id`, `quantity`, `price`)
 (2, 1, 2, 1, 190),
 (3, 2, 11, 1, 190),
 (4, 2, 1, 2, 90);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_status`
+--
+
+CREATE TABLE `order_status` (
+  `id` int(11) NOT NULL,
+  `name` varchar(75) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_status`
+--
+
+INSERT INTO `order_status` (`id`, `name`) VALUES
+(1, 'Pending'),
+(2, 'Processing'),
+(3, 'Shipped'),
+(4, 'Canceled'),
+(5, 'Complete');
 
 -- --------------------------------------------------------
 
@@ -169,7 +190,7 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`id`, `categories_id`, `p_name`, `mrp`, `price`, `quantity`, `image`, `short_desc`, `description`, `meta_title`, `meta_desc`, `meta_keyword`, `status`) VALUES
 (1, 48, 'test product', 100, 90, 10, '556470993_FPEJ8410.JPEG', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>\r\n                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.', 'meta title', '', '', 1),
 (2, 48, 'new', 200, 190, 4, '866913343_IMG_0067.JPG', '5', '6', '7', '8', '9', 1),
-(10, 48, 'test with image', 200, 190, 4, '351308031_DFQM6167.JPG', 'adasd', '', '', '', '', 1),
+(10, 48, 'test with image', 200, 190, 4, '351308031_DFQM6167.JPG', 'adasd', '', '', '', '', 0),
 (11, 48, 'test with imagetttttttttttttttttttttt', 200, 190, 5, '980361000_CEDS4312.JPG', 'kjkjhj', 'khkj', '', '', '', 1);
 
 -- --------------------------------------------------------
@@ -231,6 +252,12 @@ ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `order_status`
+--
+ALTER TABLE `order_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -262,7 +289,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `order`
