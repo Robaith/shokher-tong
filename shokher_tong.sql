@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2020 at 11:08 AM
+-- Generation Time: May 20, 2020 at 07:42 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.26
 
@@ -58,11 +58,11 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `status`) VALUES
-(2, 'cat2', 1),
-(39, 'cat1', 1),
-(48, 'cat3', 1),
-(49, 'cat4', 1),
-(52, 'cat5', 1);
+(53, 'Men', 1),
+(54, 'Women', 1),
+(55, 'Men\'s Shoes', 1),
+(56, 'Women\'s Shoes', 1),
+(57, 'Electronics', 0);
 
 -- --------------------------------------------------------
 
@@ -191,7 +191,12 @@ INSERT INTO `product` (`id`, `categories_id`, `p_name`, `mrp`, `price`, `quantit
 (1, 48, 'test product', 100, 90, 10, '556470993_FPEJ8410.JPEG', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem</p>\r\n                                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.', 'meta title', '', '', 1),
 (2, 48, 'new', 200, 190, 4, '866913343_IMG_0067.JPG', '5', '6', '7', '8', '9', 1),
 (10, 48, 'test with image', 200, 190, 4, '351308031_DFQM6167.JPG', 'adasd', '', '', '', '', 0),
-(11, 48, 'test with imagetttttttttttttttttttttt', 200, 190, 5, '980361000_CEDS4312.JPG', 'kjkjhj', 'khkj', '', '', '', 1);
+(11, 48, 'test with imagetttttttttttttttttttttt', 200, 190, 5, '980361000_CEDS4312.JPG', 'kjkjhj', 'khkj', '', '', '', 1),
+(13, 53, 'P-6', 1350, 1350, 5, '567169922_panjabi1.jpg', 'test', 'size availabe', '', '', '', 1),
+(14, 54, 'S-1', 1750, 1750, 6, '971340269_sharee.jpg', 'test', 'Different Colors available', '', '', '', 1),
+(15, 53, 'P-7', 1060, 1060, 5, '269134247_panjabi.jpg', 'test', 'size available', '', '', '', 1),
+(16, 54, 'শখের শাড়ি-২২', 1350, 1350, 5, '862061619_sharee blue.jpg', 'test', 'test', '', '', '', 1),
+(17, 53, 'test1', 1350, 1350, 6, '938440608_panjabi1.jpg', 'test', 'বাংলায়ও ডিস্ক্রিপশন লেখা যাবে', '', '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -283,7 +288,7 @@ ALTER TABLE `admin_users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `contact_us`
@@ -307,7 +312,7 @@ ALTER TABLE `order_detail`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `users`
